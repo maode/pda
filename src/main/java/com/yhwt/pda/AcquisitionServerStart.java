@@ -41,7 +41,7 @@ public class AcquisitionServerStart {
                 .handler(channelInitializer);
         // 绑定端口，开始接收进来的连接
         ChannelFuture future = bootstrap.bind(port).syncUninterruptibly();//绑定当前机器所有网卡的port端口
-        log.info("netty服务器已在[{}]端口启动监听", port);
+        log.info("服务器已在[{}]端口启动监听", port);
         serverChannel = future.channel();
 
     }
