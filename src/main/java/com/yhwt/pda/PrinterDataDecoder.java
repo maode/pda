@@ -1,6 +1,7 @@
 package com.yhwt.pda;
 
 import com.yhwt.pda.model.ReceiveData;
+import io.netty.buffer.ByteBufUtil;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.socket.DatagramPacket;
 import io.netty.handler.codec.MessageToMessageDecoder;
@@ -23,7 +24,7 @@ public class PrinterDataDecoder extends MessageToMessageDecoder<DatagramPacket> 
         log.debug("当前数据包首次读取剩余可读长度：{}",len);
         byte[] content=new byte[len];
         msg.content().readBytes(content);
-        String hexString = HexUtils.toHexString(content);
+        String hexString = ByteBufUtil.hexDump(content);
 
 
         int len2 = msg.content().readableBytes();
